@@ -1,0 +1,8 @@
+# https://laid-back-scientist.com/minio
+docker-compose up -d
+aws s3 ls s3://localbucket --endpoint-url=http://localhost:9000
+aws s3 cp img/asura.png s3://localbucket/img/asura.png --endpoint-url=http://localhost:9000
+aws s3 ls s3://localbucket/img/ --endpoint-url=http://localhost:9000
+
+aws s3 mb s3://localbucket2 --endpoint-url=http://localhost:9000
+aws s3 ls s3://localbucket2 --endpoint-url=http://localhost:9000

@@ -1,0 +1,2 @@
+wsl -d Ubuntu-22.04
+#UNIX username:ubuntu2204/ubuntu2204
