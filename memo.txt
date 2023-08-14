@@ -1,0 +1,27 @@
+OS, apache, php を合わせる
+
+wsl -d Ubuntu-22.04 -u root
+service docker start
+
+docker pull spack/centos7
+docker run -it spack/centos7
+
+yum install -y http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
+yum --enablerepo=epel,remi-php73 install -y php php-mbstring php-mysql php-xml php-mcrypt php-bcmath
+
+docker build spack-centos7 -t spack-centos7
+#docker run -d spack-centos7
+#docker run -it -v spack-centos7:/etc/httpd/conf spack-centos7
+
+docker pull centos:centos7
+#docker run -it --name centos7 centos:centos7
+#docker run -it -d --name centos7 centos:centos7
+#docker run -it --name centos7 bash
+
+docker build -t centos7 centos-centos7
+docker run --rm -p 80:80 -p 443:443 --name centos7 -d centos7
+docker run --rm -p 80:80 -p 443:443 -it --name centos7 centos7 bash #debug
+
+#crate Dockerfile
+docker run -it --name centos7 centos:centos7 bash
+

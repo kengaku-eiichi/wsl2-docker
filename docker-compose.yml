@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+    minio:
+        container_name: minio
+        build:
+            context: ./minio
+            dockerfile: Dockerfile
+        environment:
+            MINIO_ROOT_USER: localid #AWS Access Key ID
+            MINIO_ROOT_PASSWORD: localpassword #AWS Secret Access Key
+        entrypoint: bash
+        command: -c "/opt/bin/minio server /export --address :9999 --console-address :9001"
+        volumes:
+            - ./minio/data:/export  # MinIOストレージの永続化
+        ports:
+            - '9000:9999'
+            - '9001:9001'
+    centos7:
+        container_name: centos7
+        build:
+            context: ./centos-centos7
+            dockerfile: Dockerfile
+#        volumes:
+#            - ./data:/export  # MinIOストレージの永続化
+        ports:
+            - '80:80'
+            - '443:443'

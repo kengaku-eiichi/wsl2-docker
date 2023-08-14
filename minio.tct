@@ -1,0 +1,2 @@
+docker build minio -t minio
+docker run minio -d
