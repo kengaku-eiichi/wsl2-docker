@@ -23,7 +23,7 @@ RUN yum localinstall -y https://repo.mysql.com/mysql80-community-release-el7-9.n
   && rpm --import https://repo.mysql.com/RPM-GPG-KEY-mysql-2022 \
 #  && yum install -y https://repo.mysql.com/mysql-community-minimal-release-el7.rpm \
 #      https://repo.mysql.com/mysql-community-release-el7.rpm \
-  && yum-config-manager --enable mysql57-server-minimal \
+#  && yum-config-manager --enable mysql57-server-minimal \
   && yum-config-manager --disable  mysql55 mysql56-community mysql80-community \
   && yum-config-manager --enable mysql57-community \
 #  && yum install -y $MYSQL_SERVER_PACKAGE $MYSQL_SHELL_PACKAGE libpwquality \

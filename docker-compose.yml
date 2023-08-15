@@ -34,6 +34,8 @@ services:
             MYSQL_USER: local #AWS Secret Access Key
             MYSQL_PASSWORD: localpassword #AWS Secret Access Key
         volumes:
-            - ./mysql57/data:/var/lib/mysql # mysqlストレージの永続化
+            - mysql57-data:/var/lib/mysql # mysqlストレージの永続化
         ports:
             - '3306:3306'
+volumes:
+    mysql57-data:

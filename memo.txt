@@ -12,7 +12,6 @@ docker build -t centos7 centos-centos7
 docker run --rm -p 80:80 -p 443:443 --name centos7 -d centos7
 docker run --rm -p 80:80 -p 443:443 -it --name centos7 centos7 bash #debug
 
-docker run --rm -it --name myql57 oraclelinux:7-slim bash
 docker run --rm -it wsl2-docker_mysql57 bash
 
 yum localinstall -y https://repo.mysql.com/mysql80-community-release-el7-9.noarch.rpm
