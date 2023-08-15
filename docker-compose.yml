@@ -21,8 +21,19 @@ services:
         build:
             context: ./centos-centos7
             dockerfile: Dockerfile
-#        volumes:
-#            - ./data:/export  # MinIOストレージの永続化
         ports:
             - '80:80'
             - '443:443'
+    mysql57:
+        container_name: mysql57
+        build:
+            context: ./mysql57
+            dockerfile: Dockerfile
+        environment:
+            MYSQL_ROOT_PASSWORD: root #AWS Access Key ID
+            MYSQL_USER: local #AWS Secret Access Key
+            MYSQL_PASSWORD: localpassword #AWS Secret Access Key
+        volumes:
+            - ./mysql57/data:/var/lib/mysql # mysqlストレージの永続化
+        ports:
+            - '3306:3306'
