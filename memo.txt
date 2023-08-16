@@ -32,3 +32,26 @@ mysqld --version
 
 docker-compose up -d --build
 docker-compose down --rmi all -v
+
+https://hub.docker.com/r/avenus/vsftpd-alpine 使えなかった
+docker run \
+  --rm \
+  --name vsftpd \
+  -d \
+  -e FTP_USER=ftp \
+  -e FTP_PASS=1234 \
+  -e PASV_MIN=21100 \
+  -e PASV_MAX=21110 \
+  -p 20-21:20-21 \
+  -p 21100-21110:21100-21110 \
+  avenus/vsftpd-alpine
+
+https://github.com/lhauspie/docker-vsftpd-alpine 動いた
+git clone https://github.com/lhauspie/docker-vsftpd-alpine.git
+docker run --rm -it --name vsftpd -p 20-22:20-22 -p 21100-21110:21100-21110 lhauspie/vsftpd-alpine
+docker build --name docker-vsftpd-alpine docker-vsftpd-alpine
+docker run --rm -d -p 20-22:20-22 -p 21100-21110:21100-21110 lhauspie/vsftpd-alpine
+
+ftpサーバはテスト用途なのでアップロードしたファイルは再起動で消えた方が都合が良いものとした。
+ftpサーバでディレクトリをボリュームマウントして下位にユーザのホームディレクトリを作成するには、実行時に各ユーザのホームディレクトリを作成するか、
+あらかじめ手作業でホームディレクトリを作成しておく

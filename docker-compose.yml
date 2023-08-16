@@ -30,12 +30,24 @@ services:
             context: ./mysql57
             dockerfile: Dockerfile
         environment:
-            MYSQL_ROOT_PASSWORD: root #AWS Access Key ID
-            MYSQL_USER: local #AWS Secret Access Key
-            MYSQL_PASSWORD: localpassword #AWS Secret Access Key
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_USER: local
+            MYSQL_PASSWORD: localpassword
         volumes:
             - mysql57-data:/var/lib/mysql # mysqlストレージの永続化
         ports:
             - '3306:3306'
+    alpine-vsftpd:
+        container_name: alpine-vsftpd
+        hostname: alpine-vsftpd # use pasv_address and configure pasv_addr_resolve=YES
+        build:
+            context: alpine-vsftpd
+            dockerfile: Dockerfile
+        volumes:
+            - ./alpine-vsftpd/log:/var/log
+        ports:
+            - '20-22:20-22'
+            - "10090-10100:10090-10100"
+
 volumes:
     mysql57-data:
