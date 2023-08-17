@@ -14,8 +14,10 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA
 FROM oraclelinux:7-slim
 
-ARG MYSQL_SERVER_PACKAGE=mysql-community-server-minimal-5.7.33
-ARG MYSQL_SHELL_PACKAGE=mysql-shell-8.0.22
+ENV TZ=Asia/Tokyo
+
+#ARG MYSQL_SERVER_PACKAGE=mysql-community-server-minimal-5.7.33
+#ARG MYSQL_SHELL_PACKAGE=mysql-shell-8.0.22
 
 # Install server
 RUN yum localinstall -y https://repo.mysql.com/mysql80-community-release-el7-9.noarch.rpm \

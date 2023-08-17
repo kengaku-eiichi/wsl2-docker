@@ -16,10 +16,10 @@ services:
         ports:
             - '9000:9999'
             - '9001:9001'
-    centos7:
-        container_name: centos7
+    centos7-php73:
+        container_name: centos7-php73
         build:
-            context: ./centos-centos7
+            context: centos7-php73
             dockerfile: Dockerfile
         ports:
             - '80:80'
