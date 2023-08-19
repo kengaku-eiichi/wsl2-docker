@@ -1,5 +1,6 @@
-/minio/data/*
-/mysql57/data/*
-/alpine-vsftpd/data
-/alpine-vsftpd/log
+/minio/data/
+/mysql57/data/
+/alpine-vsftpd/data/
+/alpine-vsftpd/log/
 /docker-vsftpd-alpine
+/redis/data/

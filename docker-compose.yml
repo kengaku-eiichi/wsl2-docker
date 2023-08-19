@@ -46,8 +46,18 @@ services:
         volumes:
             - ./alpine-vsftpd/log:/var/log
         ports:
-            - '20-22:20-22'
+            - "20-22:20-22"
             - "10090-10100:10090-10100"
+    redis:
+        container_name: redis
+        build:
+            context: ./redis
+            dockerfile: Dockerfile
+        hostname: redis
+        ports:
+            - "6379:6379"
+        volumes:
+            - ./redis/data:/data # redisストレージの永続化
 
 volumes:
     mysql57-data:
